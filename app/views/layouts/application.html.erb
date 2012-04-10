@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title><%= content_for?(:title) ? yield(:title) : "Enterprise Application Screencasts" %> - eAppsCasts</title>
+	    <meta name="description" content="Enterprise Application screencasts containing tips, tricks and tutorials."/>
+	    <meta name="keywords" content="screencasts, tutorials, training, podcasts, programming" />
+	    <link rel="alternate" type="application/rss+xml" title="Episodes RSS" href="http://feeds.feedburner.com/appscasts" />
+      <%= render 'layouts/stylesheets'%>
+
+      <%= javascript_include_tag "application" %>
+  		<script type="text/javascript" src="http://cdn.sublimevideo.net/js/taxd0b6d.js"></script>
+
+	    <%= csrf_meta_tag %>
+	    <%= yield(:head) %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+  
+	    <% flash.each do |name, msg| %>
+	      <%= content_tag(:div, raw(msg), :id => "flash_#{name}") %>
+	    <% end %>
+
+		    <div class="container">
+		      <% if show_title? %>
+		        <h1 class="content"><%= yield(:title) %></h1>
+		      <% end %>
+
+		      <%= yield %>
+		    </div>
+
+	    <%= render 'layouts/footer'%>
+
+	</body>
+</html>

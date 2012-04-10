@@ -1,0 +1,39 @@
+<% title "Feedback", false %>
+
+<div class="content">
+  <div id="feedback">
+    <h2 class="bar">Feedback</h2>
+    <%= form_for @feedback_message do |f| %>
+      <%= f.error_messages %>
+      <div class="info">
+        <p>You can also contact us via email at <a  href= "mailto:admin@eAppsCasts.com"> admin@eAppsCasts.com</a></p>
+      </div>
+      <div class="special_email_field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, "", :autocomplete => "off" %>
+        (do not fill)
+      </div>
+      <div class="field">
+        <%= f.label :name, "Your Name" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :email, "Your Email Address" %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :content, "Message" %>
+        <%= f.text_area :content, :rows => 14, :cols => 50 %>
+      </div>
+      <div class="actions"><%= f.submit "Send Feedback" %></div>
+    <% end %>
+  </div>
+  <div id="feedback_instructions">
+    <p><strong>Please send feedback about:</strong></p>
+    <ul>
+      <li>Problems with existing episodes</li>
+      <li>Ideas for future episodes</li>
+      <li>Anything about this site</li>
+    </ul>
+  </div>
+</div>

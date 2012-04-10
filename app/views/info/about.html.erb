@@ -1,0 +1,40 @@
+<% title "About eAppsCasts", false%>
+
+<div class="container">
+<div class="hero-unit">
+<h2>About eAppsCasts</h2>
+  <p>Enterprise Application Casts (eAppsCasts) is site designed to share technical instructional videos about how to configure, design, code, and implement solutions for todays Corporate Business Applications. A new episode will be released each Monday featuring tips and tricks. The screencasts are short and focus on one technique so you can quickly move on to applying it to your own project. The topics target the intermediate developers, but beginners and experts will get something out of them as well.</p>
+
+  <h3>Contact</h3>
+  <p>If you have any comments, suggestions, questions, etc. I'd love to hear them! Please use the <%= link_to "Feedback Page", feedback_path %> or send an email to <a  href= "mailto:admin@eAppsCasts.com"> admin@eAppsCasts.com</a>
+</script>.</p>
+
+  <h3>Contributors</h3>
+  <p>Thank you to all contributors who help provide content for the site.</p>
+  <ul>
+    <% for user in User.where(:moderator => true).order(:name) %>
+      <li><%= link_to user.name, user %></li>
+    <% end %>
+  </ul>
+  <p>If you are interested in becoming a contributor, see the <%= link_to "contributor guidelines", contributors_path %>.</p>
+
+  <h3>Special Thanks</h3>
+  <p>Special thanks to Ryan Bates from <a href="http://www.railscasts.com/">RailsCast</a>. RailsCasts was the inspiration for this site and provided many helpful videos and open source code used to develop this site.</p>
+
+  <h3>This Site</h3>
+  <p>This site is available in <%= link_to "open source", "#" %>.
+	
+  <h3>Software Used</h3>
+  <ul>
+    <li><a href="http://macromates.com/">TextMate</a> - the best text editor</li>
+    <li><a href="http://stephendeken.net/software/keycastr/">KeyCastr</a> - visual keyboard shortcuts</li>
+    <li><a href="http://shinywhitebox.com/home/home.html">iShowU</a> - records the screen</li>
+    <li><a href="http://www.apple.com/finalcutpro/">Final Cut Pro</a> - for putting it all together</li>
+    <li><a href="http://www.apple.com/motion/">Motion</a> - the intro animation</li>
+  </ul>
+
+  <h3>License</h3>
+  <p>All eAppsCasts episodes are under the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">Creative Commons license</a>. You are free to distribute unedited versions of the episodes for non-commercial purposes. You are also free to translate them into any language. If you would like to edit the video please contact me.</p>
+  <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/us/88x31.png" /></a></p>
+</div>
+</div>

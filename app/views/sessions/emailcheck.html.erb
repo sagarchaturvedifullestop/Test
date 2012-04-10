@@ -1,0 +1,50 @@
+<!--Contain area -->
+<% #  debug(@facebook_data) {|e|} %>
+
+		<div class="padtop30">
+			<div class="fl width400">
+
+				<div class="loginbg white18">
+					If you are a registered user of Analyse My Bill so you can login.
+				</div>
+
+
+			</div>
+                   <%= form_tag( { :action => :emailcheck, }, { :method => :post }) do %>
+			<div class="fl dividervertical2signup"><%= image_tag('dot.gif',:alt =>"",:title =>"",:width=>"1" ,:height=>"380") %></div>
+			<div class="fr">
+				<div class="green18" align="right">Please Enter the Required Email for Login.</div>
+				<div class="padtop30" align="right"></div>
+				<div class="padtop10 green14 fr">
+
+                                   <p class="validateTips ui-corner-all" style="font-size:12px;padding:4px;color:#CD0A0A;"> * marked fields are required</p>
+                                </div>
+                                <div class="padtop50 green14">
+
+					<div>
+
+						<div class="fr">
+							<div class="fl"><%= image_tag('textbxlft.png',:alt =>"",:title =>"",:width=>"7" ,:height=>"25") %></div>
+							<div class="fl textbxmid"> <%= text_field_tag :email, params[:email] ,:class=>"textbx185" %> </div>
+							<div class="fl"><%= image_tag('textbxrgt.png',:alt =>"",:title =>"",:width=>"7" ,:height=>"25") %></div>
+							<div class="clr"></div>
+						</div>
+						<div class="padtop5 fr padrgt10"><%= label_tag :email %> *</div>
+						<div class="clr"></div>
+					</div>
+					
+
+                                       
+
+
+
+
+				</div>
+				<div class="padtop30" align="right">
+                                 <%= image_submit_tag('signin.png',:alt =>"Sign In",:title =>"LOG IN",:width=>"132" ,:height=>"50" ,:id=>"submit_btn") %>
+            <!--<%= link_to image_tag('signin.png',:alt =>"LOG IN",:title =>"LOG IN",:width=>"132" ,:height=>"50"), "#" %> --></div>
+			</div>
+			<div class="clr"></div>
+                         <% end %>
+		</div>
+	<!-- / Contain area -->

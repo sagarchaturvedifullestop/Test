@@ -1,0 +1,84 @@
+<% title "Enterprise Application Screencasts", false %>
+
+<div class="content">
+ <div class="row">
+  <div class="span-4">
+    <div class="episode_views">
+      View:
+      <span class="view"><%= link_to_unless params[:view] == "full", image_tag("views/full.png", :size => "15x10"), params.merge(:view => "full", :page => nil), :title => "Full View" %></span>
+      <span class="view"><%= link_to_unless params[:view] == "list", image_tag("views/list.png", :size => "14x10"), params.merge(:view => "list", :page => nil), :title => "List View" %></span>
+      <span class="view"><%= link_to_unless params[:view] == "grid", image_tag("views/grid.png", :size => "11x10"), params.merge(:view => nil, :page => nil), :title => "Grid View" %></span>
+    </div>
+    <div class="categories">
+      <h2>Categories</h2>
+      <ul>
+      <% for tag in Tag.order("name") %>
+        <li><%= link_to_unless(params[:tag_id].to_i == tag.id, tag.display_name, params.merge(:tag_id => tag.id, :page => nil)) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="span-8">
+  <div class="episodes">
+    <% if @tag || params[:search].present? %>
+      <div class="filters">
+        <strong>Filtering:</strong>
+        <% if params[:search].present? %>
+          <span class="filter"><%= params[:search] %> <%= link_to "x", params.merge(:search => nil, :page => nil) %></span>
+        <% end %>
+        <% if @tag %>
+          <span class="filter"><%= @tag.display_name %> <%= link_to "x", params.merge(:tag_id => nil, :page => nil) %></span>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @episodes.empty? %>
+      <p class="content">No episodes found. <%= link_to "See all episodes.", episodes_path %></p>
+    <% else %>
+      <% if params[:view] == "full" %>
+        <div class="full">
+          <%= render @episodes %>
+        </div>
+      <% elsif params[:view] == "list" %>
+        <table class="list">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Comments</th>
+            <th>Duration</th>
+            <th>Released</th>
+          </tr>
+          <% for episode in @episodes %>
+            <tr>
+              <td><%= episode.position %></td>
+              <td><%= link_to episode.name, episode %></td>
+              <td><%= link_to pluralize(episode.comments.size, "comment"), episode_path(episode, :view => "comments"), :class => "comment_count" %></td>
+              <td><%= pluralize (episode.seconds/60).round, "minute" %></td>
+              <td><%= episode.published_at.strftime('%b %d, %Y') %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% elsif params[:view].nil? %>
+        <div class="grid">
+          <% for episode in @episodes %>
+            <div class="episode">
+              <div class="screenshot"><%= link_to image_tag("/assets/stills/#{episode.asset_name}.png", :size => "200x125"), episode %></div>
+              <div class="name">
+                #<%= episode.position %>
+                <%= link_to episode.name, episode %>
+              </div>
+            </div>
+          <% end %>
+          <div class="clear"></div>
+        </div>
+      <% end %>
+
+      <%= will_paginate :previous_label => h("< Previous Page"),  :next_label => h("Next Page >") %>
+    <% end %>
+  </div>
+  <% if can? :create, :episodes %>
+    <div class="actions"><%= link_to "New Episode", new_episode_path %></div>
+  <% end %>
+  </div>
+ </div>
+</div>

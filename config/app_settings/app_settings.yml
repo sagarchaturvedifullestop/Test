@@ -1,0 +1,11 @@
+# Production settings for heroku app.
+# To override create a new file called app_settings.local.yml to define key-value pairs for which you want to override.
+
+omniauth_twitter_id: l9opXATF5w9I2YNARdmg
+omniauth_twitter_secret: Sz2BAXuK3TQjK01psT9vv1Xh8wHIT9h2juGtv1xGR1o
+omniauth_facebook_id: 205127989593082
+omniauth_facebook_secret: 6c21e966238b4f540233f701d701874c
+omniauth_google_id: 753436767949.apps.googleusercontent.com
+omniauth_google_secret: Wg17B65ik6rXA9jLtjE5MZLQ
+omniauth_linked_id: jd9a3z5y20xy
+omniauth_linked_secret: Cf6p0nua6F0pdTac

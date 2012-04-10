@@ -1,0 +1,49 @@
+<%= content_for :head do %>
+  <style>
+    .hero-unit{height: 225px;}
+    .provider {
+      font-size:28px;
+      border:1px solid #eee;
+      padding:20px 38px;;
+      float:left;
+      margin:20px;
+      background-color:#eee;
+    }
+    
+    .provider:hover {
+      background-color:#ddd;
+    }
+    
+    .provider a:hover {
+      text-decoration:none;
+      color:#0088CC;
+    }
+    
+    .provider img {
+      vertical-align:middle;
+    }
+  </style>
+<% end %>
+<div class="container">
+<div class="hero-unit">
+
+<p>
+  <h2>Login!</h2>
+</p>
+
+<p>Please enter your email to login from twitter</p>
+
+<p>
+  <%= form_tag twitter_login_check_path , :id=>"Login_frm" do %>
+
+  <p>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] ,:class=>"textbx185" %>
+  </p>
+ <p><%= submit_tag "Submit" %></p>
+  <% end %>
+ 
+</p>
+</div>
+</div>
+

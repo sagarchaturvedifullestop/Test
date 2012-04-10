@@ -1,0 +1,43 @@
+<%= content_for :head do %>
+  <style>
+    .provider {
+      font-size:28px;
+      border:1px solid #eee;
+      padding:20px 40px;;
+      float:left;
+      margin:20px;
+      background-color:#eee;
+    }
+    
+    .provider:hover {
+      background-color:#ddd;
+    }
+    
+    .provider a:hover {
+      text-decoration:none;
+      color:#0088CC;
+    }
+    
+    .provider img {
+      vertical-align:middle;
+    }
+  </style>
+<% end %>
+
+<p>
+  <h2>Signup is Free!</h2>
+</p>
+
+<p>Choose your favorite provider and proceed.</p>
+
+<p>
+  <div class="provider">
+    <%= link_to image_tag("icons/twitter.png", :width => 48, :height => 48) + "  Twitter", "/auth/twitter" %>
+  </div>
+  <div class="provider">
+    <%= link_to image_tag("icons/facebook.png", :width => 48, :height => 48) + "  Facebook", "/auth/facebook" %>
+  </div>
+  <div class="provider">
+    <%= link_to image_tag("icons/google.png", :width => 48, :height => 48) + "  Google", "/auth/google_oauth2" %>
+  </div>
+</p>
